@@ -4,7 +4,7 @@ export default function AddExperiment() {
   const navigate = useNavigate()
 
   const handleClick = () => {
-    navigate("new")
+    navigate("/experiment/new")
   }
 
   return (
@@ -19,8 +19,7 @@ export default function AddExperiment() {
         flex
         justify-center
         items-center
-        bg-green-500
-        hover:bg-green-600
+        bg-primary
         rounded-full
         shadow-lg
         cursor-pointer

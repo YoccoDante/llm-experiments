@@ -6,6 +6,8 @@ export default function useExperimentForm() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [gitUrl, setGitUrl] = useState("");
+  const [isActive, setIsActive] = useState(true)
+  const [ownerName, setOwnerName] = useState("")
 
   // State and handlers for the experiment icon
   const { expIcon, setExpIcon, handleIconChange } = useImageHook();
@@ -20,24 +22,6 @@ export default function useExperimentForm() {
     }
   };
 
-  // Function to handle changes in the text inputs
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = event.target;
-    switch (name) {
-      case "title":
-        setTitle(value);
-        break;
-      case "description":
-        setDescription(value);
-        break;
-      case "gitUrl":
-        setGitUrl(value);
-        break;
-      default:
-        break;
-    }
-  };
-
   return {
     title,
     setTitle,
@@ -49,7 +33,10 @@ export default function useExperimentForm() {
     setExpIcon,
     handleIconChange,
     handleClick,
-    handleInputChange,
     inputRef,
+    ownerName,
+    setOwnerName,
+    isActive,
+    setIsActive
   };
 }

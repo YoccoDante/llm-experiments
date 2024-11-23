@@ -31,9 +31,8 @@ export default function ExperimentCard({ id, title, description, icon }: CardPro
         flex
         flex-col
         items-center
-        w-48
-        h-48
-        max-h-48
+        w-46 min-w-46 max-w-46
+        h-46 min-h-46 max-h-46
         border
         border-gray-300
         rounded-lg
@@ -44,27 +43,6 @@ export default function ExperimentCard({ id, title, description, icon }: CardPro
       "
       onClick={() => handleDetails(id)}
     >
-      {/* Info Icon */}
-      <div
-        className="
-          absolute
-          top-2
-          right-2
-          w-8
-          h-8
-          flex
-          items-center
-          justify-center
-          cursor-pointer
-          z-1
-        bg-gray-300
-          rounded-full
-        "
-        onClick={handleInfo}
-      >
-        <img alt="info icon" src={currentIcon} />
-      </div>
-
       {!seeInfo ? (
         <>
           {/* Experiment Icon */}
@@ -89,6 +67,26 @@ export default function ExperimentCard({ id, title, description, icon }: CardPro
           text-ellipsis
         ">{description}</p>
       )}
+
+      {/* Info Icon */}
+      <div
+        className="
+          absolute
+          top-2
+          right-2
+          w-8
+          h-8
+          flex
+          items-center
+          justify-center
+          cursor-pointer
+        bg-gray-300
+          rounded-full
+        "
+        onClick={handleInfo}
+      >
+        <img alt="info icon" src={currentIcon} />
+      </div>
     </div>
   );
 }

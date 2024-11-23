@@ -1,33 +1,39 @@
 import { ChangeEvent, RefObject } from "react";
 import ExperimentIcon from "~/components/ExperimentIcon";
 
-
 interface ExperimentFormInterface {
-    submitHandler: (event:React.FormEvent) => void,
-    title: string;
-    setTitle: (title: string) => void;
-    description: string;
-    setDescription: (description: string) => void;
-    gitUrl: string;
-    setGitUrl: (url: string) => void;
-    expIcon: string;
-    handleIconChange: (event: ChangeEvent<HTMLInputElement>) => void;
-    inputRef: RefObject<HTMLInputElement>;
+  submitHandler: (event: React.FormEvent) => void;
+  title: string;
+  setTitle: (title: string) => void;
+  description: string;
+  setDescription: (description: string) => void;
+  gitUrl: string;
+  setGitUrl: (url: string) => void;
+  expIcon: string;
+  handleIconChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  inputRef: RefObject<HTMLInputElement>;
+  ownerName: string;
+  setOwnerName: (name: string) => void;
+  isActive: boolean;
+  setIsActive: (active: boolean) => void;
 }
 
 export default function ExperimentForm({
-    submitHandler,
-    title,
-    setTitle,
-    description,
-    setDescription,
-    gitUrl,
-    setGitUrl,
-    expIcon,
-    handleIconChange,
-    inputRef
-  }:ExperimentFormInterface) {
-    
+  submitHandler,
+  title,
+  setTitle,
+  description,
+  setDescription,
+  gitUrl,
+  setGitUrl,
+  expIcon,
+  handleIconChange,
+  inputRef,
+  ownerName,
+  setOwnerName,
+  isActive,
+  setIsActive,
+}: ExperimentFormInterface) {
   // Function to handle clicking the edit button to open the file input
   const handleClick = () => {
     if (inputRef.current) {
@@ -40,11 +46,13 @@ export default function ExperimentForm({
       onSubmit={submitHandler}
       className="p-4 max-w-md mx-auto rounded-xl shadow-lg space-y-6"
     >
-      <h2 className="text-2xl font-bold text-center text-primary">Experiment Details</h2>
+      <h2 className="text-2xl font-bold text-center text-primary">
+        Experiment Details
+      </h2>
 
       <div className="flex grow justify-center items-center">
         <div className="w-fit h-fit relative">
-          <ExperimentIcon icon={expIcon} size="xxl"/>
+          <ExperimentIcon icon={expIcon} size="xxl" />
           <div
             className="
               w-fit
@@ -103,7 +111,10 @@ export default function ExperimentForm({
 
       {/* Description Text Area */}
       <div>
-        <label htmlFor="description" className="block text-secondary font-medium mb-1">
+        <label
+          htmlFor="description"
+          className="block text-secondary font-medium mb-1"
+        >
           Description
         </label>
         <textarea
@@ -130,7 +141,7 @@ export default function ExperimentForm({
       {/* Git URL Input */}
       <div>
         <label htmlFor="gitUrl" className="block text-secondary font-medium mb-1">
-          Git URL
+          Experiment URL
         </label>
         <input
           type="text"
@@ -150,6 +161,48 @@ export default function ExperimentForm({
             bg-transparent
           "
         />
+      </div>
+
+      {/* Owner Name Input */}
+      <div>
+        <label
+          htmlFor="ownerName"
+          className="block text-secondary font-medium mb-1"
+        >
+          Owner Name
+        </label>
+        <input
+          type="text"
+          id="ownerName"
+          value={ownerName}
+          onChange={(e) => setOwnerName(e.target.value)}
+          placeholder="Enter owner name"
+          className="
+            w-full
+            p-3
+            border
+            border-secondary
+            rounded-md
+            focus:outline-none
+            focus:ring-2
+            focus:ring-green-500
+            bg-transparent
+          "
+          required
+        />
+      </div>
+
+      {/* Is Active Checkbox */}
+      <div>
+        <label className="flex items-center space-x-3">
+          <input
+            type="checkbox"
+            checked={isActive}
+            onChange={(e) => setIsActive(e.target.checked)}
+            className="w-5 h-5 text-primary border-secondary rounded"
+          />
+          <span className="text-secondary font-medium">Set Active</span>
+        </label>
       </div>
 
       {/* Submit Button */}

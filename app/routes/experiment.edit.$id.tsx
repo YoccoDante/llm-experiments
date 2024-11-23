@@ -16,6 +16,10 @@ export default function EditExperiment() {
     setExpIcon,
     handleIconChange,
     inputRef,
+    ownerName,
+    setOwnerName,
+    isActive,
+    setIsActive
   } = useForm();
 
   const { getExperiment, editExperiment } = useExperiments();
@@ -34,9 +38,11 @@ export default function EditExperiment() {
         setDescription(experiment.description);
         setGitUrl(experiment.gitUrl);
         setExpIcon(experiment.icon || "/icons/default-exp.png");
+        setOwnerName(experiment.ownerName)
+        setIsActive(experiment.isActive)
       }
     }
-  }, [params.id, getExperiment, setTitle, setDescription, setGitUrl, setExpIcon]);
+  }, [params.id, getExperiment]);
 
   // Handle form submission
   const handleSubmit = (event: React.FormEvent) => {
@@ -48,6 +54,8 @@ export default function EditExperiment() {
         description,
         gitUrl,
         icon: expIcon,
+        ownerName,
+        isActive
       };
       editExperiment(Number(params.id), updatedExperiment);
       alert("Experiment updated successfully!");
@@ -67,6 +75,10 @@ export default function EditExperiment() {
       expIcon={expIcon}
       handleIconChange={handleIconChange}
       inputRef={inputRef}
+      ownerName={ownerName}
+      setOwnerName={setOwnerName}
+      isActive={isActive}
+      setIsActive={setIsActive}
     />
   );
 }

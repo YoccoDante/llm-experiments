@@ -4,4 +4,6 @@ export type ExperimentType = {
   description: string;
   gitUrl: string;
   icon: string;
+  ownerName: string;
+  isActive: boolean;
 };

@@ -15,7 +15,11 @@ export default function AddExperiment() {
     expIcon,
     setExpIcon,
     handleIconChange,
-    inputRef
+    inputRef,
+    ownerName,
+    setOwnerName,
+    isActive,
+    setIsActive
   } = useForm()
   const {addExperiment} = useExperiments()
 
@@ -25,7 +29,7 @@ export default function AddExperiment() {
     event.preventDefault();
   
     // Ensure all required fields are filled
-    if (!title || !description || !gitUrl || !expIcon) {
+    if (!title || !description || !gitUrl || !expIcon || !ownerName) {
       alert("Please fill in all fields before submitting.");
       return;
     }
@@ -37,6 +41,8 @@ export default function AddExperiment() {
       description,
       gitUrl,
       icon: expIcon,
+      ownerName: ownerName,
+      isActive: isActive,
     };
   
     // Add the new experiment using the hook
@@ -66,6 +72,10 @@ export default function AddExperiment() {
       expIcon ={expIcon}
       handleIconChange ={handleIconChange}
       inputRef ={inputRef}
+      ownerName={ownerName}
+      setOwnerName={setOwnerName}
+      isActive={isActive}
+      setIsActive={setIsActive}
     />
   );
 }

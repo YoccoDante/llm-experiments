@@ -12,6 +12,8 @@ export default function ConfidenceExperiment() {
   const [experiment, setExperiment] = useState<ExperimentType | null>(null);
   const [imageUrl, setImageUrl] = useState<string | null>(null);
 
+  const ownerName = `(${experiment? experiment.ownerName : "unknown"})`
+
   const handleEditMode = () => {
     navigate(`/experiment/edit/${params.id}`)
   }
@@ -42,6 +44,7 @@ export default function ConfidenceExperiment() {
   return (
     <div style={styles.container}>
       <h1 style={styles.title}>{experiment.title}</h1>
+      <h2 className="mb-6">{ownerName}</h2>
       <div style={styles.iconContainer}>
         <ExperimentIcon icon={imageUrl} size="xxl" />
       </div>
@@ -84,7 +87,6 @@ const styles = {
   title: {
     fontSize: "24px",
     fontWeight: "bold" as const,
-    marginBottom: "20px",
   },
   description: {
     fontSize: "18px",
